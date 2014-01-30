@@ -1,12 +1,17 @@
 // Inspired by github.com/Posnet/xkcd-substitutions
 
-chrome.tabs.onUpdated.addListener(function(tabId , info) {
+chrome.tabs.onUpdated.addListener(function(tabId , info, tab) {
 	// Check that update is complete
     if (info.status === "complete") {
 		// Check if enabled. If enabled, run js/replace.js
         status = chrome.storage.sync.get(null, function (result){
             if(result["status"] === "enabled"){
-                chrome.tabs.executeScript(null, {file: "js/replace.js"});
+				if (tab.url.indexOf("twitter.com") === -1) {
+					chrome.tabs.executeScript(null, {file: "js/twitter_replace.js"});
+				}
+				if (tab.url.indexOf("reddit.com") === -1) {
+					chrome.tabs.executeScript(null, {file: "js/reddit_replace.js"});
+				}
             }
         });
     }
