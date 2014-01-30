@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+	"name": "AutoLinker",
+	"description": "This extension automatically links to subreddits and twitter profiles based on prefixes.",
+	"version": "1.0",
+	"author": "Andrew Hanrahan",
+	"permissions": ["tabs",
+	"storage",
+	"http://*/*",
+	"https://*/*"],
+	"browser_action": {
+		"default_icon": "images/enabled_icon.png",
+		"default_title": "AutoLinker is ON"
+	},
+	"background": {
+		"scripts": ["js/background.js"],
+		"persistent": false
+	}
+}
