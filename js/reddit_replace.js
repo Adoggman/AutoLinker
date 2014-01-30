@@ -1,10 +1,10 @@
 function replaceSubredditsWithHtmlLink(text) {
-	var subreddit_exp = /(\s|>)(\/?r\/(\w+))/gim;
+	var subreddit_exp = /(?!<a[^>]*?>)(\s|>)(\/?r\/(\w+))(?![^<]*?<\/a>)/gim;
 	return text.replace(subreddit_exp,"$1<a href='http://reddit.com/r/$3'>$2</a>")
 }
 
 function replaceRedditUsersWithHtmlLink(text) {
-	var reddituser_exp = /(\s|>)(\/?u\/(\w+))/gim;
+	var reddituser_exp = /(?!<a[^>]*?>)(\s|>)(\/?u\/(\w+))(?![^<]*?<\/a>)/gim;
 	return text.replace(reddituser_exp,"$1<a href='http://reddit.com/u/$3'>$2</a>")
 }
 
